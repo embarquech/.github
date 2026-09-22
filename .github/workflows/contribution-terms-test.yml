@@ -1,0 +1,36 @@
+name: Contribution terms (test rig)
+
+# Sandbox only. Do not merge.
+#
+# Copy of contribution-terms.yml with the skip for owners, members and
+# collaborators removed, so the check runs whoever opens the pull request.
+# Without this a maintainer testing the check is skipped and never sees it
+# fail. It also prints the author association GitHub reports, which tells us
+# whether the skip list in the real workflow covers Cryptnox staff.
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  terms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the contribution terms box
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          AUTHOR_TYPE: ${{ github.event.pull_request.user.type }}
+        run: |
+          echo "author_association reported by GitHub: $ASSOCIATION"
+          echo "user type: $AUTHOR_TYPE"
+          echo "--- pull request body as the check sees it ---"
+          printf '%s\n' "$PR_BODY" | tr -d '\r'
+          echo "--- end of body ---"
+          if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq '^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version 1\.0\]'; then
+            echo "Contribution terms accepted."
+          else
+            echo "::error::Tick the contribution terms box in the pull request description. See CONTRIBUTOR_AGREEMENT.md"
+            exit 1
+          fi

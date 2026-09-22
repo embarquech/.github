@@ -1,0 +1,19 @@
+name: Contribution terms (test rig caller)
+
+# Sandbox only. Do not merge.
+#
+# Calls the test copy of the check from this branch, not from main, so the
+# rig can be tried out without changing anything on main. The real caller
+# (check-contribution-terms.yml) runs alongside it and resolves the real
+# check from main, which shows both paths in one pull request.
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  terms:
+    uses: embarquech/.github/.github/workflows/contribution-terms-test.yml@test/contribution-terms-check
