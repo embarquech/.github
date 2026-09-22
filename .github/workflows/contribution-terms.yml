@@ -1,0 +1,37 @@
+name: Contribution terms
+
+# Reusable workflow. A repository calls it from a small workflow of its own
+# that triggers on pull_request. It fails when a pull request from outside
+# Cryptnox does not have the contribution terms box ticked.
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  terms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the contribution terms box
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          AUTHOR_TYPE: ${{ github.event.pull_request.user.type }}
+        run: |
+          if [ "$AUTHOR_TYPE" = "Bot" ]; then
+            echo "Bot pull request, contribution terms not required."
+            exit 0
+          fi
+          case "$ASSOCIATION" in
+            OWNER|MEMBER|COLLABORATOR)
+              echo "Author contributes under an agreement with Cryptnox. Nothing to check."
+              exit 0
+              ;;
+          esac
+          if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq '^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version 1\.0\]'; then
+            echo "Contribution terms accepted."
+          else
+            echo "::error::Tick the contribution terms box in the pull request description. See https://github.com/embarquech/.github/blob/main/CONTRIBUTOR_AGREEMENT.md"
+            exit 1
+          fi
