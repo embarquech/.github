@@ -3,6 +3,11 @@ name: Contribution terms
 # Reusable workflow. A repository calls it from a small workflow of its own
 # that triggers on pull_request. It fails when a pull request from outside
 # Cryptnox does not have the contribution terms box ticked.
+#
+# Who counts as inside Cryptnox: the pull request comes from a branch in the
+# repository itself (only people with write access can push one), or GitHub
+# reports the author as owner, member or collaborator. GitHub reports
+# membership only when it is public, which is why the branch test comes first.
 
 on:
   workflow_call:
@@ -18,9 +23,14 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
           ASSOCIATION: ${{ github.event.pull_request.author_association }}
           AUTHOR_TYPE: ${{ github.event.pull_request.user.type }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           if [ "$AUTHOR_TYPE" = "Bot" ]; then
             echo "Bot pull request, contribution terms not required."
+            exit 0
+          fi
+          if [ "$HEAD_REPO" = "$GITHUB_REPOSITORY" ]; then
+            echo "Branch lives in the repository itself, so the author has write access and contributes under an agreement with Cryptnox. Nothing to check."
             exit 0
           fi
           case "$ASSOCIATION" in
