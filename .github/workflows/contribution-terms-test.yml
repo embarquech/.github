@@ -1,13 +1,10 @@
-name: Contribution terms
+name: Contribution terms (test rig)
 
-# Reusable workflow. A repository calls it from a small workflow of its own
-# that triggers on pull_request. It fails when a pull request from outside
-# Cryptnox does not have the contribution terms box ticked.
+# Sandbox only. Do not merge.
 #
-# Who counts as inside Cryptnox: the pull request comes from a branch in the
-# repository itself (only people with write access can push one), or GitHub
-# reports the author as owner, member or collaborator. GitHub reports
-# membership only when it is public, which is why the branch test comes first.
+# Copy of contribution-terms.yml with the owner/member/collaborator skip
+# removed, so only the new branch test can let a maintainer through. Prints
+# the two values it compares.
 
 on:
   workflow_call:
@@ -25,6 +22,9 @@ jobs:
           AUTHOR_TYPE: ${{ github.event.pull_request.user.type }}
           HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
+          echo "head repo:      $HEAD_REPO"
+          echo "this repo:      $GITHUB_REPOSITORY"
+          echo "association:    $ASSOCIATION"
           if [ "$AUTHOR_TYPE" = "Bot" ]; then
             echo "Bot pull request, contribution terms not required."
             exit 0
@@ -33,15 +33,9 @@ jobs:
             echo "Branch lives in the repository itself, so the author has write access and contributes under an agreement with Cryptnox. Nothing to check."
             exit 0
           fi
-          case "$ASSOCIATION" in
-            OWNER|MEMBER|COLLABORATOR)
-              echo "Author contributes under an agreement with Cryptnox. Nothing to check."
-              exit 0
-              ;;
-          esac
           if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq '^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version 1\.0\]'; then
             echo "Contribution terms accepted."
           else
-            echo "::error::Tick the contribution terms box in the pull request description. See https://github.com/embarquech/.github/blob/main/CONTRIBUTOR_AGREEMENT.md"
+            echo "::error::Tick the contribution terms box in the pull request description."
             exit 1
           fi
