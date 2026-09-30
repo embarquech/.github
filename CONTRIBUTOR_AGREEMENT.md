@@ -1,8 +1,8 @@
 # Cryptnox Contributor Agreement
 
-Version 1.0
+Version 1.1
 
-This agreement applies to every contribution to a repository of the cryptnox organisation on GitHub from anyone who does not work for Cryptnox under an employment or contractor agreement. People who do are covered by that agreement instead.
+This agreement applies to every contribution to a repository of the cryptnox organisation on GitHub from anyone who does not work for Cryptnox under an employment or contractor agreement. People who do are covered by that agreement instead. Once that agreement has ended, this agreement applies to what they contribute afterwards.
 
 ## Why this agreement exists
 
@@ -10,15 +10,15 @@ Most Cryptnox projects are dual licensed. Anyone may use them under the open sou
 
 In short: you transfer the copyright in your contribution to Cryptnox SA, you get back a licence to do whatever you like with your own work, your contribution stays available as open source, and you are credited by name.
 
-In this agreement, "Cryptnox" means Cryptnox SA, Switzerland. "You" means the person submitting a pull request or, where that person contributes on behalf of a company, that company. The "project" is the repository you contribute to. Your "contribution" is everything you submit in that pull request (code, documentation, tests and any other material), including commits you add to it later.
+In this agreement, "Cryptnox" means Cryptnox SA, Avenue Cardinal-Mermillod 36, 1227 Carouge (GE), Switzerland. "You" means the person who submits the contribution. A company contributes under a signed agreement of its own (see section 9). The "project" is the repository you contribute to. Your "contribution" is everything you submit to the project in a pull request (code, documentation, tests and any other material), including commits you add to it later, and any patch you send to Cryptnox for the project in another way.
 
 ## 1. Transfer of rights
 
-(a) You assign to Cryptnox all right, title and interest, worldwide, in the copyright in your contribution, for the full term of protection including any extension, with effect from the moment your contribution is merged into the project. This covers every economic right and every manner of use: to reproduce, modify, adapt, translate, combine with other works, create derivative works from, distribute, rent, make available online, publicly perform and publicly display the contribution, in source or object form and in any medium, alone or as part of any product, and to license and sublicense any of this to others under any terms Cryptnox chooses, including open source, commercial and proprietary licences.
+(a) You assign to Cryptnox all right, title and interest, worldwide, in the copyright in your contribution, for the full term of protection including any extension, with effect from the moment your contribution, or the part of it concerned, is included in the project, by merging your pull request or in another way. This covers every economic right and every manner of use: to reproduce, modify, adapt, translate, combine with other works, create derivative works from, distribute, rent, make available online, publicly perform and publicly display the contribution, in source or object form and in any medium, alone or as part of any product, and to license and sublicense any of this to others under any terms Cryptnox chooses, including open source, commercial and proprietary licences.
 
-(b) Where the law that applies to you does not allow copyright to be assigned (as in Germany or Austria), you grant Cryptnox instead an exclusive, perpetual, irrevocable, worldwide, royalty-free, transferable licence, with the right to sublicense through multiple tiers, covering everything listed in (a).
+(b) Where the copyright law that applies to your contribution does not allow copyright to be assigned (as in Germany or Austria), you grant Cryptnox instead an exclusive, perpetual, irrevocable, worldwide, royalty-free, transferable licence, with the right to sublicense through multiple tiers, covering everything listed in (a).
 
-(c) In every case you also grant Cryptnox a non-exclusive, perpetual, irrevocable, worldwide, royalty-free, transferable licence, with the right to sublicense through multiple tiers, covering everything listed in (a), including the right to license your contribution to others under any terms Cryptnox chooses. This licence does not depend on (a) or (b) taking effect. Cryptnox therefore always holds at least these rights, including where the law asks for a signed document for a transfer and none exists yet. This licence and the patent licence in section 3 take effect when you submit the contribution.
+(c) In every case you also grant Cryptnox a non-exclusive, perpetual, irrevocable, worldwide, royalty-free, transferable licence, with the right to sublicense through multiple tiers, covering everything listed in (a), including the right to license your contribution to others under any terms Cryptnox chooses. This licence does not depend on (a) or (b) taking effect. Cryptnox therefore always holds at least these rights, including where the law asks for a signed document for a transfer and none exists yet. This licence and the patent licence in section 3 take effect when you submit the contribution. They apply even if your pull request is not merged, so that a maintainer can take over part of it or build on it. Whenever Cryptnox uses your contribution or part of it, sections 4 and 6 apply.
 
 (d) Any right that can be neither assigned nor licensed you agree not to assert against Cryptnox, its successors, or its direct and indirect licensees.
 
@@ -34,7 +34,9 @@ You grant Cryptnox, and everyone who receives the project directly or indirectly
 
 ## 4. Your contribution stays open source
 
-If Cryptnox includes your contribution in the project, then for as long as Cryptnox distributes your contribution under any other terms, Cryptnox will also make it available to the public under the open source licence stated in the project's LICENSE file on the day you submitted it. Cryptnox may in addition license the contribution under any other terms, including its commercial licence.
+If Cryptnox includes your contribution, or part of it, in the project, then for as long as Cryptnox distributes it under any other terms, Cryptnox will also make it available to the public under the open source licence that applied to the project on the day you submitted it. That is the licence in the project's LICENSE file, in the version given there, and also in any later version where the project's files say "or later". Cryptnox may in addition license the contribution under any other terms, including its commercial licence.
+
+Some projects are not under an open source licence, for example documentation published under a Creative Commons licence. For such a project Cryptnox will make your contribution available to the public under the licence that applied to the project on the day you submitted it. If the project had no licence file on that day, Cryptnox will make your contribution available to the public under the licence it gives the project.
 
 ## 5. Moral rights
 
@@ -42,7 +44,7 @@ Your right to be named as author is respected through the credit described in se
 
 ## 6. Credit
 
-Every contributor whose pull request is merged is credited in three ways. You are listed in the project's AUTHORS.md file under the name or handle you choose: add the line yourself in your pull request, otherwise we add your GitHub handle. If the project has no AUTHORS.md yet, it is created with the first outside contribution. Your pull request is merged in a way that keeps you as the commit author, so the git history shows your work. The changelog entry for a notable change names you, where the project keeps a changelog. If you prefer not to be listed, say so in the pull request. If something is missing or wrong, tell us and we will correct it. Correcting the credit is the only remedy for a mistake or omission in it. You can ask at any time to be renamed in or removed from AUTHORS.md and future changelog entries. Commits already in the public git history, including the name and email address in them, cannot be removed.
+Every contributor whose contribution is included in the project is credited in three ways. You are listed in the project's AUTHORS.md file under the name or handle you choose: add the line yourself in your pull request, otherwise we add your GitHub handle. If the project has no AUTHORS.md yet, it is created with the first outside contribution. Your pull request is merged in a way that keeps you as the commit author, so the git history shows your work. Where a maintainer takes over only part of your work in a commit of their own, that commit names you. The changelog entry for a notable change names you, where the project keeps a changelog. If you prefer not to be listed, say so in the pull request. If something is missing or wrong, tell us and we will correct it. Correcting the credit is the only remedy for a mistake or omission in it. You can ask at any time to be renamed in or removed from AUTHORS.md and future changelog entries. Commits already in the public git history, including the name and email address in them, cannot be removed.
 
 The licence back, the open source commitment and the credit are what Cryptnox gives in return for the rights you transfer. They are commitments Cryptnox makes, but they are not conditions of the transfer: the rights granted in sections 1 and 3 stay with Cryptnox in any case, and they cannot be withdrawn.
 
@@ -50,30 +52,52 @@ The licence back, the open source commitment and the credit are what Cryptnox gi
 
 By accepting this agreement you confirm that:
 
-1. You wrote the contribution yourself and it is your original work, except for parts you have clearly identified under point 4.
+1. You wrote the contribution yourself and it is your original work, except for the parts you have identified under points 4 and 6.
 2. You have the right to submit it and to grant the rights in sections 1 and 3, and doing so does not breach any agreement you have with someone else.
-3. If your employer, a client or anyone else has rights in work you create, you have their permission to contribute under this agreement. If you contribute on behalf of a company, you confirm that you may bind it.
+3. If your employer, a client or anyone else has rights in work you create, you have their permission to contribute under this agreement. Cryptnox may ask you to show that permission in writing.
 4. Any part you did not write yourself is identified in the pull request, with its origin and its licence, and its licence header is kept. That licence must be permissive and allow use under both the project's open source licence and a commercial licence.
-5. The contribution contains no code under the GPL or AGPL.
-6. If substantial parts were produced with an AI tool, you have said so in the pull request, the confirmations in this section still apply to those parts, and to your knowledge they do not reproduce someone else's code.
-7. You are at least 18 years old, or your parent or guardian accepts this agreement for you.
+5. The contribution contains no third-party code under a copyleft or non-commercial licence. This includes the GPL, AGPL, LGPL, MPL and EPL, and the Creative Commons ShareAlike and NonCommercial licences.
+6. If substantial parts were produced with an AI tool, you have said so in the pull request. You have reviewed those parts and you answer for them as for your own work: points 2 to 5 apply to them, and to your knowledge they do not reproduce someone else's code.
+7. You are at least 18 years old.
 
 Material you did not write is not assigned under section 1(a) or (b). It stays under its own licence. The same applies to your changes to third-party code that a project keeps under its own upstream licence: those changes are contributed under that upstream licence. Section 1(c) and section 3 do apply to your own changes to such code. They do not apply to material you did not write.
 
-## 8. No obligation to use your contribution
+Where the law gives no copyright in a part produced with an AI tool, there is nothing to assign for that part. Section 1 then covers whatever rights do exist in it.
+
+## 8. No obligation, no warranty, liability
 
 Cryptnox is not obliged to merge, keep or use any contribution, and may change or remove it later. Apart from the confirmations in section 7, you provide your contribution as it is, without warranty of any kind.
 
+If a confirmation in section 7 turns out to be untrue, you are liable to Cryptnox only if you acted with intent or gross negligence. As far as the law allows, neither you nor Cryptnox is liable to the other for indirect or consequential damage or for lost profit.
+
+If you learn that a confirmation is no longer true, for example because someone claims rights in your contribution, tell Cryptnox without delay.
+
 ## 9. How you accept
 
-You accept this agreement by ticking the contribution terms box in the pull request. Ticking the box means that you, the holder of the GitHub account that opened the pull request, have read this agreement in the version published in this repository on that day, that you agree to it for everything in that pull request, and that the confirmations in section 7 are true. You tick it again for each pull request. If a pull request was opened before the box existed, or contains commits by other people, each person concerned accepts by writing "I accept the Cryptnox Contributor Agreement, version 1.0" in a comment on the pull request. Maintainers will not tick the box for you, and a pull request without this acceptance cannot be merged, however small the change.
+You accept this agreement by ticking the contribution terms box in the pull request. Ticking the box means that you, the holder of the GitHub account that opened the pull request, have read this agreement in version 1.1, which the box links to, that you agree to it for everything in that pull request, and that the confirmations in section 7 are true. You tick it again for each pull request. If a pull request was opened before the box existed, or contains commits by other people, each person concerned accepts by writing "I accept the Cryptnox Contributor Agreement, version 1.1" in a comment on the pull request. If you send a patch in another way, for example with a security report, you accept by writing the same sentence in the private advisory or in your email. Maintainers will not tick the box for you, and a contribution without this acceptance cannot be merged, however small the change.
 
-Some countries only recognise a transfer of copyright if there is a signed document. Cryptnox may ask you to confirm your acceptance in such a document where that matters for your contribution. Whether or not it does, the licence in section 1(c) applies.
+The box is for individuals. If you contribute on behalf of a company, or your employer wants to accept once for all its employees, the company signs a corporate version of this agreement, which names the people who may contribute for it. If you are under 18, your parent or guardian accepts for you in a signed document. In both cases write to contact@cryptnox.com before you open the pull request.
 
-Cryptnox keeps a record of each acceptance (GitHub account, pull request, agreement version and date).
+Some countries only recognise a transfer of copyright if there is a signed document. Cryptnox may ask you to confirm your acceptance in such a document, with your legal name and country of residence, where that matters for your contribution. Whether or not it does, the licence in section 1(c) applies.
 
-The version number at the top changes whenever the text of this agreement changes. A new version applies only to pull requests accepted under it.
+Cryptnox keeps a record of each acceptance, as described in section 10.
 
-If you cannot accept this agreement, you can still help: describe the bug or the fix in an issue, without code, and a maintainer can implement it. If your employer needs a signed agreement of its own, or you have questions about this agreement, write to contact@cryptnox.com.
+The version number at the top changes whenever the text of this agreement changes. A new version applies only to pull requests accepted under it. Every version stays in this repository under a tag of its own, so the text you accepted can always be found.
+
+If you cannot accept this agreement, you can still help: describe the bug or the fix in an issue, without code, and a maintainer can implement it. If you have questions about this agreement, write to contact@cryptnox.com.
+
+## 10. Personal data
+
+Cryptnox SA is the controller of the personal data described here. For each acceptance Cryptnox records the name and the numeric ID of your GitHub account, the pull request, the commits concerned, the agreement version and the date, and your legal name and country of residence where you gave them. Cryptnox uses this record only to prove the rights it holds in the project, which it needs in order to license the project. The record is not public. Cryptnox keeps it for as long as it uses your contribution and for ten years after that.
+
+Some data is public by the nature of git and GitHub: the pull request, your commits with the name and email address in them, and the credit described in section 6.
+
+You can ask for access to your data and for its correction at contact@cryptnox.com. For everything else the Cryptnox privacy policy applies (https://cryptnox.com/legal-notices/#privacy-policy).
+
+## 11. Applicable law and jurisdiction
+
+This agreement is governed by Swiss law. Subject to mandatory legal provisions, the courts at the registered office of Cryptnox SA have jurisdiction over any dispute arising out of or relating to this agreement.
+
+If a provision of this agreement is invalid, the rest remains in force.
 
 Parts of this agreement are adapted from the Harmony Contributor Assignment Agreement, version 1.0 (harmonyagreements.org), used under the Creative Commons Attribution 3.0 Unported licence (https://creativecommons.org/licenses/by/3.0/).
