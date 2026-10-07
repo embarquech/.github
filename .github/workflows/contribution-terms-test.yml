@@ -1,0 +1,38 @@
+name: Contribution terms (test rig)
+
+# Sandbox only. Do not merge.
+#
+# Copy of contribution-terms.yml with every skip removed (bot, branch in the
+# repository, owner/member/collaborator), so the acceptance line is checked
+# whoever opens the pull request. Prints what it compares.
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  terms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the contribution terms box
+        env:
+          AGREEMENT_VERSION: "1.1"
+          PR_BODY: ${{ github.event.pull_request.body }}
+          ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          echo "head repo:   $HEAD_REPO"
+          echo "this repo:   $GITHUB_REPOSITORY"
+          echo "association: $ASSOCIATION"
+          echo "version:     $AGREEMENT_VERSION"
+          echo "--- acceptance lines in the body ---"
+          printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -n "I have read and I accept" || echo "(none)"
+          echo "--- end ---"
+          version_re=$(printf '%s' "$AGREEMENT_VERSION" | sed 's/\./\\./g')
+          if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq "^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version ${version_re}\]"; then
+            echo "Contribution terms accepted."
+          else
+            echo "::error::Tick the contribution terms box in the pull request description. See https://github.com/embarquech/.github/blob/contributor-agreement-v${AGREEMENT_VERSION}/CONTRIBUTOR_AGREEMENT.md"
+            exit 1
+          fi
