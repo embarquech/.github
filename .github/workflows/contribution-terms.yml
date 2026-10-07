@@ -8,6 +8,10 @@ name: Contribution terms
 # repository itself (only people with write access can push one), or GitHub
 # reports the author as owner, member or collaborator. GitHub reports
 # membership only when it is public, which is why the branch test comes first.
+#
+# AGREEMENT_VERSION must match the version named in the acceptance line of
+# the pull request template and the tag that line links to. Change it in the
+# same pull request that changes the agreement.
 
 on:
   workflow_call:
@@ -20,6 +24,7 @@ jobs:
     steps:
       - name: Check the contribution terms box
         env:
+          AGREEMENT_VERSION: "1.1"
           PR_BODY: ${{ github.event.pull_request.body }}
           ASSOCIATION: ${{ github.event.pull_request.author_association }}
           AUTHOR_TYPE: ${{ github.event.pull_request.user.type }}
@@ -39,9 +44,10 @@ jobs:
               exit 0
               ;;
           esac
-          if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq '^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version 1\.0\]'; then
+          version_re=$(printf '%s' "$AGREEMENT_VERSION" | sed 's/\./\\./g')
+          if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq "^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version ${version_re}\]"; then
             echo "Contribution terms accepted."
           else
-            echo "::error::Tick the contribution terms box in the pull request description. See https://github.com/embarquech/.github/blob/main/CONTRIBUTOR_AGREEMENT.md"
+            echo "::error::Tick the contribution terms box in the pull request description. See https://github.com/embarquech/.github/blob/contributor-agreement-v${AGREEMENT_VERSION}/CONTRIBUTOR_AGREEMENT.md"
             exit 1
           fi
