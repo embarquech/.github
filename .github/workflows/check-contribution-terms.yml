@@ -1,10 +1,10 @@
 name: Contribution terms
 
-# Fails a pull request from outside Cryptnox whose contribution terms box is
-# not ticked. The check itself is the reusable workflow next to this file.
+# pull_request_target runs this file from the base branch, so a pull request
+# cannot replace the check. Safe here: no checkout, no token.
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, edited, reopened, synchronize]
     branches: [main]
 
