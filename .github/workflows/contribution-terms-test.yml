@@ -1,0 +1,29 @@
+name: Contribution terms (test rig)
+
+# Sandbox only. Do not merge. The check with every skip removed; prints what it compares.
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  terms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the contribution terms box
+        env:
+          AGREEMENT_VERSION: "1.1"
+          PR_BODY: ${{ github.event.pull_request.body }}
+          ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          echo "event: $GITHUB_EVENT_NAME | head repo: $HEAD_REPO | this repo: $GITHUB_REPOSITORY | association: $ASSOCIATION"
+          printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -n "I have read and I accept" || echo "(no acceptance line)"
+          version_re=$(printf '%s' "$AGREEMENT_VERSION" | sed 's/\./\\./g')
+          if printf '%s\n' "$PR_BODY" | tr -d '\r' | grep -Eq "^- \[[xX]\] I have read and I accept the \[Cryptnox Contributor Agreement, version ${version_re}\]"; then
+            echo "Contribution terms accepted."
+          else
+            echo "::error::Tick the contribution terms box in the pull request description."
+            exit 1
+          fi

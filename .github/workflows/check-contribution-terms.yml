@@ -1,10 +1,11 @@
 name: Contribution terms
 
-# pull_request_target runs this file from the base branch, so a pull request
-# cannot replace the check. Safe here: no checkout, no token.
+# Sandbox only. Simulates a pull request that replaces the caller with a no-op
+# job reporting the same check name. Must not affect the real check, which
+# runs from main on pull_request_target.
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, edited, reopened, synchronize]
     branches: [main]
 
@@ -12,4 +13,7 @@ permissions: {}
 
 jobs:
   terms:
-    uses: embarquech/.github/.github/workflows/contribution-terms.yml@main
+    name: terms / terms
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "spoofed check, no terms were read"
